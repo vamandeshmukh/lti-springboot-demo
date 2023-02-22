@@ -22,8 +22,13 @@ public class EmployeeController {
 	EmployeeService empService;
 
 	@RequestMapping(value = "/get-all-emps", method = RequestMethod.GET, produces = "application/json")
-	public List<Employee> getAllEmployees() {
-		return empService.getAllEmployees();
+	public ResponseEntity<List<Employee>> getAllEmployees() {
+		List<Employee> empList = empService.getAllEmployees();
+		HttpStatus status = HttpStatus.OK;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Message", "Employee were found successfully!");
+		ResponseEntity<List<Employee>> response = new ResponseEntity<>(empList, headers, status);
+		return response;
 	}
 
 	@RequestMapping(value = "/get-emp-by-id/{eid}", method = RequestMethod.GET, produces = "application/json")
@@ -37,8 +42,13 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/add-emp", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-	public Employee addEmployee(@RequestBody Employee employee) {
-		return empService.addEmployee(employee);
+	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
+		Employee emp = empService.addEmployee(employee);
+		HttpStatus status = HttpStatus.CREATED;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Message", "Employee created successfully!");
+		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
+		return response;
 	}
 
 }

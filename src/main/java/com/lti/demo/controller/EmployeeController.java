@@ -3,6 +3,9 @@ package com.lti.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +27,13 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/get-emp-by-id/{eid}", method = RequestMethod.GET, produces = "application/json")
-	public Employee getEmpById(@PathVariable(name = "eid") int employeeId) {
-		return empService.getEmployeeById(employeeId);
+	public ResponseEntity<Employee> getEmpById(@PathVariable(name = "eid") int employeeId) {
+		Employee emp = empService.getEmployeeById(employeeId);
+		HttpStatus status = HttpStatus.OK;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Message", "Employee found successfully!");
+		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
+		return response;
 	}
 
 	@RequestMapping(value = "/add-emp", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")

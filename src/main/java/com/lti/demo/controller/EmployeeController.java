@@ -1,5 +1,6 @@
 package com.lti.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,6 +10,9 @@ import com.lti.demo.service.EmployeeService;
 @RestController
 public class EmployeeController {
 
+//	EmployeeService empService = new EmployeeService();
+
+	@Autowired
 	EmployeeService empService;
 
 	@RequestMapping("/get-emp-by-id")

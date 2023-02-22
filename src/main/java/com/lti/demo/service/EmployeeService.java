@@ -1,7 +1,10 @@
 package com.lti.demo.service;
 
+import org.springframework.stereotype.Service;
+
 import com.lti.demo.model.Employee;
 
+@Service
 public class EmployeeService {
 
 	public Employee getEmployeeById(int employeeId) {

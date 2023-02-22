@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,14 +20,12 @@ public class EmployeeController {
 	EmployeeService empService;
 
 	@RequestMapping("get-all-emps")
-//	produces="application/json"
 	public List<Employee> getAllEmployees() {
 		return empService.getAllEmployees();
 	}
 
-	@RequestMapping("/get-emp-by-id")
-	public Employee getEmpById() {
-		int employeeId = new Random().nextInt(1000);
+	@RequestMapping("/get-emp-by-id/{eid}")
+	public Employee getEmpById(@PathVariable(name = "eid") int employeeId) {
 		return empService.getEmployeeById(employeeId);
 	}
 
@@ -49,6 +48,57 @@ public class EmployeeController {
 //	deleteEmp(int employeeId);	
 
 }
+
+//package com.lti.demo.controller;
+//
+//import java.util.List;
+//import java.util.Random;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RestController;
+//
+//import com.lti.demo.model.Employee;
+//import com.lti.demo.service.EmployeeService;
+//
+//@RestController
+//public class EmployeeController {
+//
+////	EmployeeService empService = new EmployeeService(); // not required 
+//
+//	@Autowired
+//	EmployeeService empService;
+//
+//	@RequestMapping("get-all-emps")
+//	public List<Employee> getAllEmployees() {
+//		return empService.getAllEmployees();
+//	}
+//
+//	@RequestMapping("/get-emp-by-id")
+//	public Employee getEmpById() {
+//		int employeeId = new Random().nextInt(1000);
+//		return empService.getEmployeeById(employeeId);
+//	}
+//
+//	@RequestMapping("/add-emp")
+//	public Employee addEmployee() {
+//		Employee emp = empService.getEmployeeById(new Random().nextInt(1000));
+//		return empService.addEmployee(emp);
+//	}
+//
+////	getAllEmps();
+////
+////	getEmpById(int employeeId);
+////
+////	getEmpsByFirstName(String firstName);
+////
+////	addEmp(Employee employee);
+////
+////	updateEmp(Employee employee);
+////
+////	deleteEmp(int employeeId);	
+//
+//}
 
 //package com.lti.demo.controller;
 //

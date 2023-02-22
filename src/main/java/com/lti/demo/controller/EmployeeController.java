@@ -15,14 +15,9 @@ import com.lti.demo.service.EmployeeService;
 @RestController
 public class EmployeeController {
 
-//	EmployeeService empService = new EmployeeService(); // not required 
-
 	@Autowired
 	EmployeeService empService;
 
-//	@RequestMapping("/get-all-emps")
-//	@GetMapping("/get-all-emps")
-//	@RequestMapping(value = "/get-all-emps", method = RequestMethod.GET)
 	@RequestMapping(value = "/get-all-emps", method = RequestMethod.GET, produces = "application/json")
 	public List<Employee> getAllEmployees() {
 		return empService.getAllEmployees();
@@ -39,19 +34,50 @@ public class EmployeeController {
 		return empService.addEmployee(emp);
 	}
 
-//	getAllEmps();
-//
-//	getEmpById(int employeeId);
-//
-//	getEmpsByFirstName(String firstName);
-//
-//	addEmp(Employee employee);
-//
-//	updateEmp(Employee employee);
-//
-//	deleteEmp(int employeeId);	
-
 }
+
+//package com.lti.demo.controller;
+//
+//import java.util.List;
+//import java.util.Random;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RestController;
+//
+//import com.lti.demo.model.Employee;
+//import com.lti.demo.service.EmployeeService;
+//
+//@RestController
+//public class EmployeeController {
+//
+////	EmployeeService empService = new EmployeeService(); // not required 
+//
+//	@Autowired
+//	EmployeeService empService;
+//
+////	@RequestMapping("/get-all-emps")
+////	@GetMapping("/get-all-emps")
+////	@RequestMapping(value = "/get-all-emps", method = RequestMethod.GET)
+//	@RequestMapping(value = "/get-all-emps", method = RequestMethod.GET, produces = "application/json")
+//	public List<Employee> getAllEmployees() {
+//		return empService.getAllEmployees();
+//	}
+//
+//	@RequestMapping(value = "/get-emp-by-id/{eid}", method = RequestMethod.GET, produces = "application/json")
+//	public Employee getEmpById(@PathVariable(name = "eid") int employeeId) {
+//		return empService.getEmployeeById(employeeId);
+//	}
+//
+//	@RequestMapping(value = "/add-emp", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+//	public Employee addEmployee() {
+//		Employee emp = empService.getEmployeeById(new Random().nextInt(1000));
+//		return empService.addEmployee(emp);
+//	}
+//
+//}
 
 //package com.lti.demo.controller;
 //
@@ -89,18 +115,6 @@ public class EmployeeController {
 //		Employee emp = empService.getEmployeeById(new Random().nextInt(1000));
 //		return empService.addEmployee(emp);
 //	}
-//
-////	getAllEmps();
-////
-////	getEmpById(int employeeId);
-////
-////	getEmpsByFirstName(String firstName);
-////
-////	addEmp(Employee employee);
-////
-////	updateEmp(Employee employee);
-////
-////	deleteEmp(int employeeId);	
 //
 //}
 

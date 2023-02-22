@@ -1,8 +1,11 @@
 package com.lti.demo.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.lti.demo.model.Employee;
@@ -10,7 +13,10 @@ import com.lti.demo.model.Employee;
 @Service
 public class EmployeeService {
 
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
 	public List<Employee> getAllEmployees() {
+		LOG.info("getAllEmployees");
 		List<Employee> empList = new ArrayList<>();
 		empList.add(new Employee(101, "Sonu", 90000));
 		empList.add(new Employee(102, "Monu", 99000));
@@ -21,13 +27,13 @@ public class EmployeeService {
 	}
 
 	public Employee getEmployeeById(int employeeId) {
+		LOG.info(Integer.toString(employeeId));
 		Employee emp = new Employee(employeeId, "Sonu", 90000);
-		System.out.println(emp.toString());
 		return emp;
 	}
 
 	public Employee addEmployee(Employee employee) {
-		System.out.println(employee.toString());
+		LOG.info(employee.toString());
 		return employee;
 	}
 

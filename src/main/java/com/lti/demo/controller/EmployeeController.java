@@ -1,7 +1,6 @@
 package com.lti.demo.controller;
 
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +21,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/get-all-emps", method = RequestMethod.GET, produces = "application/json")
 	public List<Employee> getAllEmployees() {
 		return empService.getAllEmployees();
-	} 
+	}
 
 	@RequestMapping(value = "/get-emp-by-id/{eid}", method = RequestMethod.GET, produces = "application/json")
 	public Employee getEmpById(@PathVariable(name = "eid") int employeeId) {

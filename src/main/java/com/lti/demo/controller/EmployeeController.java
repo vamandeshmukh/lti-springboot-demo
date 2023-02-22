@@ -1,7 +1,11 @@
 package com.lti.demo.controller;
 
+import java.util.List;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.demo.model.Employee;
@@ -10,15 +14,28 @@ import com.lti.demo.service.EmployeeService;
 @RestController
 public class EmployeeController {
 
-//	EmployeeService empService = new EmployeeService();
+//	EmployeeService empService = new EmployeeService(); // not required 
 
 	@Autowired
 	EmployeeService empService;
 
+	@RequestMapping("get-all-emps")
+//	produces="application/json"
+	public List<Employee> getAllEmployees() {
+		return empService.getAllEmployees();
+	}
+
 	@RequestMapping("/get-emp-by-id")
 	public Employee getEmpById() {
-		int employeeId = 101;
+		int employeeId = new Random().nextInt(1000);
 		return empService.getEmployeeById(employeeId);
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/add-emp", path = "/add-emp", consumes = "application/json", produces = "application/json", name = "addEmployee")
+//	@RequestMapping(path = "/add-emp", consumes = "application/json", produces = "application/json")
+	public Employee addEmployee() {
+		Employee emp = empService.getEmployeeById(new Random().nextInt(1000));
+		return empService.addEmployee(emp);
 	}
 
 //	getAllEmps();

@@ -1,5 +1,8 @@
 package com.lti.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.lti.demo.model.Employee;
@@ -7,19 +10,29 @@ import com.lti.demo.model.Employee;
 @Service
 public class EmployeeService {
 
+	public List<Employee> getAllEmployees() {
+		List<Employee> empList = new ArrayList<>();
+		empList.add(new Employee(101, "Sonu", 90000));
+		empList.add(new Employee(102, "Monu", 99000));
+		empList.add(new Employee(103, "Tonu", 95000));
+		empList.add(new Employee(104, "Ponu", 98000));
+		empList.forEach(e -> System.out.println(e.toString()));
+		return empList;
+	}
+
 	public Employee getEmployeeById(int employeeId) {
 		Employee emp = new Employee(employeeId, "Sonu", 90000);
 		System.out.println(emp.toString());
 		return emp;
 	}
 
-//	getAllEmployees();
-//
-//	getEmployeeById(int employeeId);
-//
+	public Employee addEmployee(Employee employee) {
+		System.out.println(employee.toString());
+		return employee;
+	}
+
 //	getEmployeesByFirstName(String firstName);
 //
-//	addEmployee(Employee employee);
 //
 //	updateEmployee(Employee employee);
 //

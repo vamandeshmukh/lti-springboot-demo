@@ -51,6 +51,14 @@ public class EmployeeController {
 		return response;
 	}
 
+// create other APIs
+
+// getEmpsByFirstName(String firstName);
+
+// updateEmp(Employee employee);
+
+// deleteEmp(int employeeId);	
+
 }
 
 //package com.lti.demo.controller;

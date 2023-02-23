@@ -27,12 +27,12 @@ public class EmployeeService {
 	}
 
 	public Employee getEmployeeById(int employeeId) {
-		LOG.info(Integer.toString(employeeId));
 		Optional<Employee> empOptional = empRepository.findById(employeeId);
 		if (empOptional.isPresent()) {
+			LOG.info("Employee with eid " + employeeId + " was found successfully.");
 			return empOptional.get();
 		} else {
-			String errorMessage = "Employee with eid " + employeeId + " not found.";
+			String errorMessage = "Employee with eid " + employeeId + " was not found.";
 			LOG.warn(errorMessage);
 			throw new EmployeeNotFoundException(errorMessage);
 		}

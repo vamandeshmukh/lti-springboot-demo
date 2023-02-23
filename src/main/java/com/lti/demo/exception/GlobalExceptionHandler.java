@@ -13,7 +13,6 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(EmployeeNotFoundException.class)
 	public ResponseEntity<Employee> handleEmployeeNotFoundException(EmployeeNotFoundException e) {
-		
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("message", e.getMessage());

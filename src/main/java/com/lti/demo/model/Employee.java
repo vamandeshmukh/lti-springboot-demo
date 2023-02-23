@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,7 +30,9 @@ public class Employee {
 	@Column(name = "salary")
 	private double salary;
 
-//	Department department;
+	@ManyToOne
+	@JoinColumn(name = "departmentId")
+	Department department;
 
 	public Employee() {
 		super();
@@ -39,6 +43,15 @@ public class Employee {
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.salary = salary;
+	}
+
+	public Employee(int employeeId, @Length(min = 3, max = 6, message = "Length should be 3 - 6") String firstName,
+			double salary, Department department) {
+		super();
+		this.employeeId = employeeId;
+		this.firstName = firstName;
+		this.salary = salary;
+		this.department = department;
 	}
 
 	public int getEmployeeId() {
@@ -65,9 +78,18 @@ public class Employee {
 		this.salary = salary;
 	}
 
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	@Override
 	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", salary=" + salary + "]";
+		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", salary=" + salary
+				+ ", department=" + department + "]";
 	}
 
 }

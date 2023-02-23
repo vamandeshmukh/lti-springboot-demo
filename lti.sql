@@ -11,5 +11,6 @@ insert into departments_table (department_id, department_name, city) values (102
 insert into departments_table (department_id, department_name, city) values (1030, 'Finance', 'Pune');
 insert into departments_table (department_id, department_name, city) values (1040, 'Sales', 'Mumbai');
 
+commit;
 
 

@@ -61,7 +61,7 @@ public class EmployeeController {
 		return response;
 	}
 
-	@RequestMapping(value = "/update-emp", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+	@RequestMapping(value = "/update-emp", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
 		Employee emp = empService.updateEmployee(employee);
 		HttpStatus status = HttpStatus.CREATED;
@@ -71,7 +71,7 @@ public class EmployeeController {
 		return response;
 	}
 
-	@RequestMapping(value = "/delete-emp/{eid}", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/delete-emp/{eid}", method = RequestMethod.DELETE, produces = "application/json")
 	public ResponseEntity<Employee> deleteEmployee(@PathVariable(name = "eid") int employeeId) {
 		Employee emp = empService.deleteEmployee(employeeId);
 		HttpStatus status = HttpStatus.CREATED;

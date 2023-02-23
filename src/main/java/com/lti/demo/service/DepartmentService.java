@@ -24,7 +24,7 @@ public class DepartmentService {
 		return deptRepository.findAll();
 	}
 
-	public Department getEmployeeById(int departmentId) {
+	public Department getDepartmentById(int departmentId) {
 		Optional<Department> deptOptional = deptRepository.findById(departmentId);
 		if (deptOptional.isPresent()) {
 			LOG.info(deptOptional.get().toString());

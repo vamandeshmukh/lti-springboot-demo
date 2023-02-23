@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lti.demo.exception.EmployeeNotFoundException;
+import com.lti.demo.model.Department;
 import com.lti.demo.model.Employee;
 import com.lti.demo.repository.EmployeeRepository;
 
@@ -19,6 +20,9 @@ public class EmployeeService {
 
 	@Autowired
 	EmployeeRepository empRepository;
+
+	@Autowired
+	DepartmentService deptService;
 
 	public List<Employee> getAllEmployees() {
 		List<Employee> empList = empRepository.findAll();
@@ -46,6 +50,9 @@ public class EmployeeService {
 
 	public Employee addEmployee(Employee employee) {
 		LOG.info(employee.toString());
+		if (null != employee.getDepartment()) {
+			deptService.getEmployeeById(employee.getDepartment().getDepartmentId());
+		}
 		return empRepository.save(employee);
 	}
 

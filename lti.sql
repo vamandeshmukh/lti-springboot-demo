@@ -1,0 +1,4 @@
+
+
+select current_date();
+

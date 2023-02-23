@@ -25,7 +25,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/get-all-emps", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Employee>> getAllEmployees() {
 		List<Employee> empList = empService.getAllEmployees();
-		HttpStatus status = HttpStatus.OK;
+		HttpStatus status = HttpStatus.FOUND;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Message", "Employee were found successfully!");
 		ResponseEntity<List<Employee>> response = new ResponseEntity<>(empList, headers, status);
@@ -35,7 +35,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/get-emp-by-id/{eid}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Employee> getEmpById(@PathVariable(name = "eid") int employeeId) {
 		Employee emp = empService.getEmployeeById(employeeId);
-		HttpStatus status = HttpStatus.OK;
+		HttpStatus status = HttpStatus.FOUND;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Message", "Employee was found successfully!");
 		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
@@ -45,7 +45,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/get-emp-by-first-name/{first-name}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Employee>> getEmpsByFirstName(@PathVariable(name = "first-name") String firstName) {
 		List<Employee> empList = empService.getEmployeesByFirstName(firstName);
-		HttpStatus status = HttpStatus.OK;
+		HttpStatus status = HttpStatus.FOUND;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Message", "Employees were found successfully!");
 		ResponseEntity<List<Employee>> response = new ResponseEntity<>(empList, headers, status);

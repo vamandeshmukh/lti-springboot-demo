@@ -1,6 +1,7 @@
 package com.lti.demo.model;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,13 +18,17 @@ import jakarta.persistence.Table;
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // for MySQL 
-//	@GenericGenerator(name = "emp_table_sq", strategy = )
-//	@GeneratedValue(strategy = GenerationType.IDENTITY) // all the other DBs
+	// Other DBs
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// MySQL
+	@GenericGenerator(name = "emp_seq", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "emp_seq")
 	@Column(name = "employee_id")
 	private int employeeId; // PK
 
 	@Column(name = "first_name")
+	@Length(min = 3, max = 6, message = "Length should be 3 - 6")
+	// apply constraints on all fields
 	private String firstName;
 
 	@Column(name = "salary")

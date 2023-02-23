@@ -9,5 +9,14 @@ import com.lti.demo.model.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 	// no methods here as of now ...
+	
+//	basic CRUD Ops - no need to write any methods 
+	
+//	select - findAll();
+//	select - findById();
+//	insert - save();
+//	update - save();
+//	delete - deleteById();
+	
 
 }

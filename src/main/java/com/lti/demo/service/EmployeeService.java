@@ -1,7 +1,5 @@
 package com.lti.demo.service;
 
-import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lti.demo.exception.EmployeeNotFoundException;
 import com.lti.demo.model.Employee;
 import com.lti.demo.repository.EmployeeRepository;
 
@@ -29,13 +28,14 @@ public class EmployeeService {
 
 	public Employee getEmployeeById(int employeeId) {
 		LOG.info(Integer.toString(employeeId));
-
 		Optional<Employee> empOptional = empRepository.findById(employeeId);
-
-		if (empOptional.isPresent())
+		if (empOptional.isPresent()) {
 			return empOptional.get();
-		else
-			throw new RuntimeException("Employee not found!");
+		} else {
+			String errorMessage = "Employee with eid " + employeeId + " not found.";
+			LOG.warn(errorMessage);
+			throw new EmployeeNotFoundException(errorMessage);
+		}
 	}
 
 	public Employee addEmployee(Employee employee) {

@@ -29,7 +29,7 @@ public class EmployeeService {
 	public Employee getEmployeeById(int employeeId) {
 		Optional<Employee> empOptional = empRepository.findById(employeeId);
 		if (empOptional.isPresent()) {
-			LOG.info("Employee with eid " + employeeId + " was found successfully.");
+			LOG.info(empOptional.get().toString());
 			return empOptional.get();
 		} else {
 			String errorMessage = "Employee with eid " + employeeId + " was not found.";
@@ -38,18 +38,78 @@ public class EmployeeService {
 		}
 	}
 
-	public Employee addEmployee(Employee employee) {
+	public List<Employee> getEmployeesByFirstName(String firstName) {
+		List<Employee> empList = empRepository.findByFirstName(firstName);
+		LOG.info(empList.toString());
+		return empList;
+	}
+
+	public Employee updateEmployee(Employee employee) {
+		this.getEmployeeById(employee.getEmployeeId());
 		LOG.info(employee.toString());
 		return empRepository.save(employee);
 	}
 
-//	getEmployeesByFirstName(String firstName);
-//
-//	updateEmployee(Employee employee);
-//
-//	deleteEmployee(int employeeId);	
+	public Employee deleteEmployee(int employeeId) {
+		Employee emp = this.getEmployeeById(employeeId);
+		empRepository.deleteById(employeeId);
+		return emp;
+	}
 
 }
+
+//package com.lti.demo.service;
+//
+//import java.util.List;
+//import java.util.Optional;
+//
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//
+//import com.lti.demo.exception.EmployeeNotFoundException;
+//import com.lti.demo.model.Employee;
+//import com.lti.demo.repository.EmployeeRepository;
+//
+//@Service
+//public class EmployeeService {
+//
+//	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+//
+//	@Autowired
+//	EmployeeRepository empRepository;
+//
+//	public List<Employee> getAllEmployees() {
+//		List<Employee> empList = empRepository.findAll();
+//		LOG.info(empList.toString());
+//		return empList;
+//	}
+//
+//	public Employee getEmployeeById(int employeeId) {
+//		Optional<Employee> empOptional = empRepository.findById(employeeId);
+//		if (empOptional.isPresent()) {
+//			LOG.info("Employee with eid " + employeeId + " was found successfully.");
+//			return empOptional.get();
+//		} else {
+//			String errorMessage = "Employee with eid " + employeeId + " was not found.";
+//			LOG.warn(errorMessage);
+//			throw new EmployeeNotFoundException(errorMessage);
+//		}
+//	}
+//
+//	public Employee addEmployee(Employee employee) {
+//		LOG.info(employee.toString());
+//		return empRepository.save(employee);
+//	}
+//
+////	getEmployeesByFirstName(String firstName);
+////
+////	updateEmployee(Employee employee);
+////
+////	deleteEmployee(int employeeId);	
+//
+//}
 
 //package com.lti.demo.service;
 //

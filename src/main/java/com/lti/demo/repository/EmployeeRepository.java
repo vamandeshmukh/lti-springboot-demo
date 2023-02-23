@@ -8,4 +8,6 @@ import com.lti.demo.model.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
+	// no methods here as of now ...
+
 }

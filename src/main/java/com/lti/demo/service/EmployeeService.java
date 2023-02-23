@@ -28,13 +28,13 @@ public class EmployeeService {
 
 	public Employee getEmployeeById(int employeeId) {
 		LOG.info(Integer.toString(employeeId));
-		Employee emp = new Employee(employeeId, "Sonu", 90000);
+		Employee emp = empRepository.findById(employeeId).get();
 		return emp;
 	}
 
 	public Employee addEmployee(Employee employee) {
 		LOG.info(employee.toString());
-		return employee;
+		return empRepository.save(employee);
 	}
 
 //	getEmployeesByFirstName(String firstName);

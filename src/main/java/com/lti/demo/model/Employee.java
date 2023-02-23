@@ -1,9 +1,13 @@
 package com.lti.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Employee {
 
-	
-	private int employeeId; // PK 
+	@Id
+	private int employeeId; // PK
 	private String firstName;
 	private double salary;
 

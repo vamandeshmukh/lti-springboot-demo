@@ -2,7 +2,8 @@ package com.lti.demo.model;
 
 public class Employee {
 
-	private int employeeId;
+	
+	private int employeeId; // PK 
 	private String firstName;
 	private double salary;
 

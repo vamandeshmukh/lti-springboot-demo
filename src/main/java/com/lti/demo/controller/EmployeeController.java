@@ -36,7 +36,7 @@ public class EmployeeController {
 		Employee emp = empService.getEmployeeById(employeeId);
 		HttpStatus status = HttpStatus.OK;
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Message", "Employee found successfully!");
+		headers.add("Message", "Employee was found successfully!");
 		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
 		return response;
 	}
@@ -46,7 +46,7 @@ public class EmployeeController {
 		List<Employee> empList = empService.getEmployeesByFirstName(firstName);
 		HttpStatus status = HttpStatus.OK;
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Message", "Employees found successfully!");
+		headers.add("Message", "Employees were found successfully!");
 		ResponseEntity<List<Employee>> response = new ResponseEntity<>(empList, headers, status);
 		return response;
 	}
@@ -56,7 +56,7 @@ public class EmployeeController {
 		Employee emp = empService.addEmployee(employee);
 		HttpStatus status = HttpStatus.CREATED;
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Message", "Employee created successfully!");
+		headers.add("Message", "Employee was created successfully!");
 		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
 		return response;
 	}
@@ -66,7 +66,7 @@ public class EmployeeController {
 		Employee emp = empService.updateEmployee(employee);
 		HttpStatus status = HttpStatus.CREATED;
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Message", "Employee updated successfully!");
+		headers.add("Message", "Employee was updated successfully!");
 		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
 		return response;
 	}
@@ -76,7 +76,7 @@ public class EmployeeController {
 		Employee emp = empService.deleteEmployee(employeeId);
 		HttpStatus status = HttpStatus.CREATED;
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Message", "Employee deleted successfully!");
+		headers.add("Message", "Employee was deleted successfully!");
 		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
 		return response;
 	}

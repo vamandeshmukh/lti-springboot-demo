@@ -41,6 +41,16 @@ public class EmployeeController {
 		return response;
 	}
 
+	@RequestMapping(value = "/get-emp-by-first-name/{first-name}", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<List<Employee>> getEmpsByFirstName(@PathVariable(name = "first-name") String firstName) {
+		List<Employee> empList = empService.getEmployeesByFirstName(firstName);
+		HttpStatus status = HttpStatus.OK;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Message", "Employees found successfully!");
+		ResponseEntity<List<Employee>> response = new ResponseEntity<>(empList, headers, status);
+		return response;
+	}
+
 	@RequestMapping(value = "/add-emp", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
 		Employee emp = empService.addEmployee(employee);
@@ -51,13 +61,27 @@ public class EmployeeController {
 		return response;
 	}
 
-// create other APIs
+	@RequestMapping(value = "/update-emp", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
+		Employee emp = empService.updateEmployee(employee);
+		HttpStatus status = HttpStatus.CREATED;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Message", "Employee updated successfully!");
+		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
+		return response;
+	}
 
-// getEmpsByFirstName(String firstName);
+	@RequestMapping(value = "/delete-emp/{eid}", method = RequestMethod.POST, produces = "application/json")
+	public ResponseEntity<Employee> deleteEmployee(@PathVariable(name = "eid") int employeeId) {
+		Employee emp = empService.deleteEmployee(employeeId);
+		HttpStatus status = HttpStatus.CREATED;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Message", "Employee deleted successfully!");
+		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
+		return response;
+	}
 
-// updateEmp(Employee employee);
-
-// deleteEmp(int employeeId);	
+	// create other APIs
 
 }
 

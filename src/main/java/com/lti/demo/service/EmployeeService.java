@@ -44,6 +44,11 @@ public class EmployeeService {
 		return empList;
 	}
 
+	public Employee addEmployee(Employee employee) {
+		LOG.info(employee.toString());
+		return empRepository.save(employee);
+	}
+
 	public Employee updateEmployee(Employee employee) {
 		this.getEmployeeById(employee.getEmployeeId());
 		LOG.info(employee.toString());

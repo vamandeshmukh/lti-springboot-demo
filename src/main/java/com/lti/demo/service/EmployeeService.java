@@ -3,6 +3,7 @@ package com.lti.demo.service;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,8 +29,13 @@ public class EmployeeService {
 
 	public Employee getEmployeeById(int employeeId) {
 		LOG.info(Integer.toString(employeeId));
-		Employee emp = empRepository.findById(employeeId).get();
-		return emp;
+
+		Optional<Employee> empOptional = empRepository.findById(employeeId);
+
+		if (empOptional.isPresent())
+			return empOptional.get();
+		else
+			throw new RuntimeException("Employee not found!");
 	}
 
 	public Employee addEmployee(Employee employee) {

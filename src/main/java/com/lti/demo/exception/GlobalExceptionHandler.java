@@ -33,10 +33,10 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(ConstraintViolationException.class)
-	public ResponseEntity<Object> handleConstraintException(ConstraintViolationException ex) {
-//		HttpStatus.UNPROCESSABLE_ENTITY;
-//		 write necessary code here 
-		return null;
+	public ResponseEntity<Object> handleConstraintException(ConstraintViolationException e) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", e.getMessage());
+		return new ResponseEntity<Object>(null, headers, HttpStatus.UNPROCESSABLE_ENTITY);
 	}
 
 	// create other exception classes and call them where needed

@@ -75,7 +75,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/delete-emp/{eid}", method = RequestMethod.DELETE, produces = "application/json")
 	public ResponseEntity<Employee> deleteEmployee(@PathVariable(name = "eid") int employeeId) {
 		Employee emp = empService.deleteEmployee(employeeId);
-		HttpStatus status = HttpStatus.CREATED;
+		HttpStatus status = HttpStatus.ACCEPTED;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Message", "Employee was deleted successfully!");
 		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);

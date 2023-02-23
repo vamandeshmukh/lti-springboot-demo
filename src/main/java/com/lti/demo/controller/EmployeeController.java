@@ -18,7 +18,8 @@ import com.lti.demo.service.EmployeeService;
 
 @RestController
 //@CrossOrigin(origins = "*")
-@CrossOrigin(origins = "localhost://3000")
+//@CrossOrigin(origins = "localhost://3000")
+@CrossOrigin(origins = { "localhost://3000", "localhost://3003" })
 @RequestMapping(value = "/emp")
 public class EmployeeController {
 

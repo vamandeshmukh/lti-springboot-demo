@@ -16,6 +16,7 @@ import com.lti.demo.model.Employee;
 import com.lti.demo.service.EmployeeService;
 
 @RestController
+@RequestMapping(value = "/emp")
 public class EmployeeController {
 
 	@Autowired

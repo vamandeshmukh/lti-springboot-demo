@@ -13,7 +13,7 @@ import com.lti.demo.model.Employee;
 import com.lti.demo.repository.EmployeeRepository;
 
 @Service
-public class EmployeeService {
+public class EmployeeService implements IEmployeeService {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -23,12 +23,14 @@ public class EmployeeService {
 	@Autowired
 	DepartmentService deptService;
 
+	@Override
 	public List<Employee> getAllEmployees() {
 		List<Employee> empList = empRepository.findAll();
 		LOG.info(empList.toString());
 		return empList;
 	}
 
+	@Override
 	public Employee getEmployeeById(int employeeId) {
 		Optional<Employee> empOptional = empRepository.findById(employeeId);
 		if (empOptional.isPresent()) {
@@ -41,12 +43,14 @@ public class EmployeeService {
 		}
 	}
 
+	@Override
 	public List<Employee> getEmployeesByFirstName(String firstName) {
 		List<Employee> empList = empRepository.findByFirstName(firstName);
 		LOG.info(empList.toString());
 		return empList;
 	}
 
+	@Override
 	public Employee addEmployee(Employee employee) {
 		LOG.info(employee.toString());
 		if (null != employee.getDepartment()) {
@@ -55,12 +59,14 @@ public class EmployeeService {
 		return empRepository.save(employee);
 	}
 
+	@Override
 	public Employee updateEmployee(Employee employee) {
 		this.getEmployeeById(employee.getEmployeeId());
 		LOG.info(employee.toString());
 		return empRepository.save(employee);
 	}
 
+	@Override
 	public Employee deleteEmployee(int employeeId) {
 		Employee emp = this.getEmployeeById(employeeId);
 		empRepository.deleteById(employeeId);

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.demo.model.Employee;
 import com.lti.demo.service.EmployeeService;
+import com.lti.demo.service.IEmployeeService;
 
 @RestController
 //@CrossOrigin(origins = "*")
@@ -24,7 +25,7 @@ import com.lti.demo.service.EmployeeService;
 public class EmployeeController {
 
 	@Autowired
-	EmployeeService empService;
+	IEmployeeService empService;
 
 	@RequestMapping(value = "/get-all-emps", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Employee>> getAllEmployees() {

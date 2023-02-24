@@ -10,10 +10,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "employees_table")
+//@NamedNativeQuery(query = "SELECT * FROM employees_table WHERE salary = ?", name = "salarySelectQuery")
 public class Employee {
 
 	@Id

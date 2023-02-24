@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.demo.model.Employee;
-import com.lti.demo.service.EmployeeService;
 import com.lti.demo.service.IEmployeeService;
 
 @RestController

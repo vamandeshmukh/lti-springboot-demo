@@ -23,7 +23,7 @@ import com.lti.demo.service.IEmployeeService;
 @CrossOrigin(origins = { "localhost://3000", "localhost://3003" })
 @RequestMapping(value = "/emp")
 public class EmployeeController {
-
+ 
 	@Autowired
 	IEmployeeService empService;
 

@@ -73,6 +73,11 @@ public class EmployeeService implements IEmployeeService {
 		return emp;
 	}
 
+	public int addNums(int i, int j) {
+		LOG.info("Sum = " + i + j);
+		return i + j;
+	}
+
 }
 
 //package com.lti.demo.service;

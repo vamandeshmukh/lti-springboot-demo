@@ -13,4 +13,4 @@ insert into departments_table (department_id, department_name, city) values (104
 
 commit;
 
-
+select * from app_users;

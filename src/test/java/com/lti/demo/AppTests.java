@@ -17,7 +17,7 @@ class AppTests {
 	EmployeeService empService;
 
 	@Test
-	public void testAddNums() {
+	public void testAddNums() { // positive test case 
 		int expected = empService.addNums(5, 5);
 		int actual = 5 + 5;
 		assertEquals(expected, actual);

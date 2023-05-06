@@ -10,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,8 +18,11 @@ import jakarta.persistence.Table;
 public class Employee {
 
 	@Id
+	// for MySQL 
 	@GenericGenerator(name = "emp_seq", strategy = "increment")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "emp_seq")
+	// any other DB 
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "employee_id")
 	private int employeeId; // PK
 

@@ -1,6 +1,7 @@
 package com.lti.demo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +18,17 @@ class AppTests {
 	EmployeeService empService;
 
 	@Test
-	public void testAddNums() { // positive test case 
-		int expected = empService.addNums(5, 5);
-		int actual = 5 + 5;
+	public void testAddNums() { // positive test case
+		int expected = 10;
+		int actual = empService.addNums(5, 5);
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void testAddNums2() {
-		int expected = empService.addNums(5, 5);
-		int actual = 5 + 5;
-		assertEquals(expected, actual);
+	public void testAddNums2() { // negative test case
+		int unexpected = 10;
+		int actual = empService.addNums(5, 6);
+		assertNotEquals(unexpected, actual);
 	}
 
 }
